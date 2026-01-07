@@ -63,3 +63,6 @@ Base URL: http://localhost:8080/api/employees
 ## Backend will start at
 
 http://localhost:8080
+
+## Frontend Repository
+https://github.com/Tejaswini0506/hrms-frontend
