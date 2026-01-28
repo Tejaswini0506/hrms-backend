@@ -21,12 +21,10 @@ public class EmployeeController {
         this.authContext = authContext;
     }
 
-    // ✅ ADMIN only
+    // ✅ TEMP: Allow employee creation for frontend demo
+    // NOTE: JWT-based ADMIN authorization will be enforced in next phase
     @PostMapping
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
-        if (!authContext.isAdmin()) {
-            return ResponseEntity.status(403).build();
-        }
         Employee savedEmployee = employeeService.saveEmployee(employee);
         return ResponseEntity.ok(savedEmployee);
     }
@@ -45,27 +43,21 @@ public class EmployeeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // ✅ ADMIN only
+    // Allow employee update for frontend demo
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(
             @PathVariable Long id,
             @RequestBody Employee employee) {
 
-        if (!authContext.isAdmin()) {
-            return ResponseEntity.status(403).build();
-        }
-
         Employee updatedEmployee = employeeService.updateEmployee(id, employee);
         return ResponseEntity.ok(updatedEmployee);
     }
 
-    // ✅ ADMIN only
+    //Allow employee deletion for frontend demo
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
-        if (!authContext.isAdmin()) {
-            return ResponseEntity.status(403).build();
-        }
         employeeService.deleteEmployee(id);
         return ResponseEntity.noContent().build();
     }
+
 }
