@@ -29,12 +29,11 @@ It exposes REST APIs for employee management and demonstrates basic role-based a
 
 Base URL: http://localhost:8080/api/employees
 
-
 | Method | Endpoint | Description |
 |------|---------|-------------|
 | GET | `/api/employees` | Fetch all employees |
 | GET | `/api/employees/{id}` | Fetch employee by ID |
-| POST | `/api/employees` | Create employee (Admin only) |
+| POST | `/api/employees` | Create employee (temporarily unrestricted for frontend demo) |
 | PUT | `/api/employees/{id}` | Update employee (Admin only) |
 | DELETE | `/api/employees/{id}` | Delete employee (Admin only) |
 
@@ -43,22 +42,23 @@ Base URL: http://localhost:8080/api/employees
 ## Role-Based Access (Demo)
 
 - **ADMIN**
-  - Can add, edit, and delete employees
+  - Can update and delete employees
 - **USER**
   - Read-only access
 
-> This is a demo-level RBAC implementation.  
-> In a production system, roles would be enforced using authentication mechanisms such as JWT and Spring Security.
+> Note: Employee creation (`POST`) is temporarily unrestricted to support frontend demonstration.  
+> This is a demo-level RBAC implementation.
 
 ---
 
 ## How to Run
 
-1. Ensure MySQL is running
-2. Update database credentials in `application.properties`
+1. Ensure MySQL is running  
+2. Update database credentials in `application.properties`  
 3. Run the application:
    ```bash
    mvn spring-boot:run
+
 
 ## Backend will start at
 
